@@ -1,0 +1,32 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="9.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="9.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="9.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Tools" Version="9.0.1">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Sample.App.BLL\Sample.App.BLL.csproj" />
+    <ProjectReference Include="..\Sample.App.Data.Mongo\Sample.App.Data.Mongo.csproj" />
+    <ProjectReference Include="..\Sample.App.Data.SQL\Sample.App.Data.SQL.csproj" />
+    <ProjectReference Include="..\Sample.App.Domain.Mongo\Sample.App.Domain.Mongo.csproj" />
+    <ProjectReference Include="..\Sample.App.Domain\Sample.App.Domain.SQL.csproj" />
+    <ProjectReference Include="..\Sample.App.Infrastructure\Sample.App.Infrastructure.csproj" />
+  </ItemGroup>
+
+</Project>
