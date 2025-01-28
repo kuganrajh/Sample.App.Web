@@ -5,16 +5,25 @@ using Sample.App.Data.SQL.Repositories;
 using Sample.App.Data.SQL.Seed;
 using Sample.App.Domain.SQL;
 using Sample.App.Infrastructure.Interface;
+using Serilog;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
+// Configure Serilog
+Log.Logger = new LoggerConfiguration()
+    .ReadFrom.Configuration(builder.Configuration) // Read settings from appsettings.json
+    .Enrich.FromLogContext()                       // Add contextual information to logs
+    .WriteTo.Console()                             // Write logs to the console
+    .CreateLogger();
+
+// Use Serilog as the logging provider
+builder.Host.UseSerilog(Log.Logger);
 
 // Set the JSON serializer to handle circular references by ignoring cycles
 builder.Services.AddControllers()
